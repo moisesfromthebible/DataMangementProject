@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sqlite3
 import csv
+import seaborn as sns
 
 election_data = pd.read_csv("countypres_2000-2020.csv")
 
@@ -150,4 +151,84 @@ columns_to_remove = [
     'Med_HH_Income_Percent_of_State_Total_2021'
 ]
 unemployment_data_cleaned = unemployment_data_cleaned.drop(columns=columns_to_remove, errors='ignore')
+
+# File paths
+file_2000_2010 = 'population-2000-2010.csv'
+file_2010_2020 = 'population-2010-2020.csv'
+file_2020_2023 = 'population-2020-2023.csv'
+
+# Read the CSV files
+pop_2000_2010 = pd.read_csv(file_2000_2010, encoding='ISO-8859-1')
+pop_2010_2020 = pd.read_csv(file_2010_2020, encoding='ISO-8859-1')
+pop_2020_2023 = pd.read_csv(file_2020_2023, encoding='ISO-8859-1')
+
+# Define columns to keep for each time range
+columns_to_keep_2000 = ['STATE', 'COUNTY', 'STNAME'] + [f'POPESTIMATE{year}' for year in range(2000, 2011)]
+columns_to_keep_2010 = ['STATE', 'COUNTY', 'STNAME'] + [f'POPESTIMATE{year}' for year in range(2011, 2021)]  # Exclude 2010
+columns_to_keep_2020 = ['STATE', 'COUNTY', 'STNAME'] + [f'POPESTIMATE{year}' for year in range(2021, 2023)]  # Exclude 2020
+
+# Filter the columns for each dataset
+pop_2000_2010_filtered = pop_2000_2010[columns_to_keep_2000]
+pop_2010_2020_filtered = pop_2010_2020[columns_to_keep_2010]
+pop_2020_2023_filtered = pop_2020_2023[columns_to_keep_2020]
+
+# Reset index before merging
+pop_2000_2010_filtered = pop_2000_2010_filtered.reset_index(drop=True)
+pop_2010_2020_filtered = pop_2010_2020_filtered.reset_index(drop=True)
+pop_2020_2023_filtered = pop_2020_2023_filtered.reset_index(drop=True)
+
+# Merge 2000-2010 with 2010-2020
+combined_df = pd.merge(
+    pop_2000_2010_filtered,
+    pop_2010_2020_filtered,
+    on=['STATE', 'COUNTY', 'STNAME'],
+    how='inner'  # Change to 'outer' if you want to retain all rows
+)
+
+# Merge the above result with 2020-2023
+combined_df = pd.merge(
+    combined_df,
+    pop_2020_2023_filtered,
+    on=['STATE', 'COUNTY', 'STNAME'],
+    how='inner'  # Change to 'outer' if you want to retain all rows
+)
+
+# Optional: Sort the DataFrame by STATE and COUNTY
+combined_df = combined_df.sort_values(by=['STATE', 'COUNTY']).reset_index(drop=True)
+
+# Display the combined DataFrame
+combined_df.head()
+# Save as a CSV file
+output_file = 'combined_population_data.csv'
+combined_df.to_csv(output_file, index=False, encoding='utf-8')
+print(f"DataFrame saved as {output_file}")
+
+# Assuming combined_df is your merged DataFrame
+# Ensure that all POPESTIMATE columns are numeric
+pop_columns = [col for col in combined_df.columns if 'POPESTIMATE' in col]
+combined_df[pop_columns] = combined_df[pop_columns].apply(pd.to_numeric, errors='coerce')
+
+# Calculate total population per year
+total_population = combined_df[pop_columns].sum()
+
+# Extract years from column names
+years = [int(col.replace('POPESTIMATE', '')) for col in total_population.index]
+pop_values = total_population.values
+
+# Create a DataFrame for plotting
+total_pop_df = pd.DataFrame({
+    'Year': years,
+    'Total Population': pop_values
+})
+
+# Plotting
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=total_pop_df, x='Year', y='Total Population', marker='o')
+plt.title('Total US Population Over Time (2000-2022)')
+plt.xlabel('Year')
+plt.ylabel('Population')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
 
