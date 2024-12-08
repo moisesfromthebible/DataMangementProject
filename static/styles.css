@@ -1,100 +1,66 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-    text-align: center;
 }
 
+/* Center content */
 h1 {
-    color: #38194b;
-    margin-top: 30px;
-    font-size: 2.5em;
-    text-transform: uppercase;
-}
-
-form {
-    display: inline-block;
-    background-color: #fff;
-    padding: 30px;
+    text-align: center;
     margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-}
-
-label {
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 8px;
     color: #444;
 }
 
-input[type="range"] {
-    width: 100%;
-    height: 8px;
-    -webkit-appearance: none;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-    transition: background 0.3s ease;
+/* Form container */
+form {
+    background: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
 }
 
-input[type="range"]:focus {
-    background: #b3b3b3;
+/* Form labels and inputs */
+form label {
+    font-size: 14px;
+    color: #555;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #A020F0;
-    border-radius: 50%;
-    cursor: pointer;
+form input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #A020F0;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-output {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-    margin-top: 5px;
+form button {
     display: block;
-    text-align: center;
     width: 100%;
-}
-
-input[type="submit"] {
-    background-color: #A020F0;
+    background-color: #007bff;
     color: white;
+    font-size: 16px;
+    padding: 10px;
     border: none;
-    padding: 12px 30px;
-    font-size: 1.2em;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Result message */
+h2 {
+    text-align: center;
+    color: #444;
     margin-top: 20px;
-}
-
-input[type="submit"]:hover {
-    background-color: #800080;
-    transform: scale(1.05);
-}
-
-input[type="submit"]:active {
-    transform: scale(1);
-}
-
-form > label, form > input[type="range"], form > output {
-    margin-bottom: 15px;
 }

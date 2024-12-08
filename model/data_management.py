@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.model_selection import train_test_split
+import joblib
 
 # Load and Clean Election Data
 election_data = pd.read_csv("countypres_2000-2020.csv")
@@ -241,3 +242,9 @@ importances = pd.DataFrame({
     'feature': X.columns,
     'importance': model.feature_importances_
 }).sort_values('importance', ascending=False)
+
+model_data = {
+    'model': model,
+    'feature_order': X.columns.tolist()
+}
+joblib.dump(model_data, '../random_forest_model.pkl')

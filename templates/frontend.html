@@ -7,25 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Predict Election Outcome for a County</h1>
-
+    <h1>County Election Outcome Prediction</h1>
     <form method="POST">
-        <label for="population">Population</label>
-        <input type="range" id="population" name="population" min="0" max="100000" step="1000" value="50000"
-               oninput="this.nextElementSibling.value = this.value">
-        <output>50000</output>
+        <label for="population">Population Estimate:</label><br>
+        <input type="number" id="population" name="population" required><br><br>
 
-        <label for="education">Education</label>
-        <input type="range" id="education" name="education" min="0" max="5000" step="10" value="1000"
-               oninput="this.nextElementSibling.value = this.value">
-        <output>1000</output>
+        <label for="education">Education Level (%):</label><br>
+        <input type="number" id="education" name="education" required><br><br>
 
-        <label for="unemployment">Unemployment</label>
-        <input type="range" id="unemployment" name="unemployment" min="0" max="100" step="1" value="50"
-               oninput="this.nextElementSibling.value = this.value">
-        <output>50</output>
+        <label for="unemployment">Unemployment Rate (%):</label><br>
+        <input type="number" id="unemployment" name="unemployment" step="0.01" required><br><br>
 
-        <input type="submit" value="Predict">
+        <button type="submit">Predict</button>
     </form>
+
+    {% if prediction %}
+        <h2>{{ prediction }}</h2>
+    {% endif %}
 </body>
 </html>
