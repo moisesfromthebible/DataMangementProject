@@ -1,11 +1,10 @@
-import pandas as pd
 import sqlite3
+
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.model_selection import train_test_split
+import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.model_selection import train_test_split
 
 # Load Election Data
 election_data = pd.read_csv("countypres_2000-2020.csv")
