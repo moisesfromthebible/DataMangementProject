@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
+import joblib
+import pandas as pd
 
 app = Flask(__name__)
+
+rf_model = joblib.load('random_forest_model.pkl')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -9,17 +14,21 @@ def home():
         education = int(request.form.get('education', 0))
         unemployment = int(request.form.get('unemployment', 0))
 
-        party_A_percentage_2020 = (education / 5000) * 50 + (100 - unemployment) * 0.5
-        party_B_percentage_2020 = 100 - party_A_percentage_2020
+        new_data = {
+            'population': [population],
+            'education_level': [education],
+            'unemployment_rate': [unemployment]
+        }
+        new_data_df = pd.DataFrame(new_data)
 
-        prediction = (
-            f"Predicted outcome based on your inputs: "
-            f"Party A - {party_A_percentage_2020:.2f}% vs Party B - {party_B_percentage_2020:.2f}%"
-        )
+        prediction = rf_model.predict(new_data_df)
 
-        return render_template('frontend.html', prediction=prediction)
+        result = "Party A" if prediction[0] == 1 else "Party B"
+
+        return render_template('frontend.html', prediction=f"Predicted outcome: {result}")
 
     return render_template('frontend.html', prediction=None)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
