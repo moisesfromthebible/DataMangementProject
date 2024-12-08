@@ -5,7 +5,6 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        # Get form data (range inputs are fetched using `request.form`)
         median_income = request.form.get('median_income')
         population_density = request.form.get('population_density')
         percent_white = request.form.get('percent_white')
@@ -20,13 +19,10 @@ def home():
         party_B_percentage_2020 = request.form.get('party_B_percentage_2020')
         election_year = request.form.get('election_year')
 
-        # Example prediction logic (you can replace this with actual logic)
         prediction = f"Predicted outcome based on your inputs: Party A - {party_A_percentage_2020}% vs Party B - {party_B_percentage_2020}%"
 
-        # Render the page with the prediction result
         return render_template('frontend.html', prediction=prediction)
 
-    # If it's a GET request, just render the empty form
     return render_template('frontend.html', prediction=None)
 
 if __name__ == '__main__':
