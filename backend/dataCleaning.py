@@ -4,13 +4,11 @@ import csv
 
 election_data = pd.read_csv("countypres_2000-2020.csv")
 
-# Inspecting columns and cleaning the Election Data
 election_data_cleaned = election_data[
     ['year', 'state', 'state_po', 'county_name', 'county_fips', 'candidate',
      'party', 'candidatevotes', 'totalvotes']
 ].dropna()
 
-# Renaming columns for clarity and consistency
 election_data_cleaned = election_data_cleaned.rename(columns={
     'state_po': 'state_abbreviation',
     'county_fips': 'fips_code',
