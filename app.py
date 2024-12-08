@@ -5,9 +5,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        median_income = request.form.get('median_income')
-        population_density = request.form.get('population_density')
-        percent_white = request.form.get('percent_white')
+        population = request.form.get('population')
+        education = request.form.get('education')
+        unemployment = request.form.get('unemployment')
 
         prediction = f"Predicted outcome based on your inputs: Party A - {party_A_percentage_2020}% vs Party B - {party_B_percentage_2020}%"
 
