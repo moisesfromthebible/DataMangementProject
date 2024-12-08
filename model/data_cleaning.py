@@ -239,11 +239,9 @@ excel_file = pd.ExcelFile(file_path)
 
 # Display all sheet names
 sheet_names = excel_file.sheet_names
-print("Sheet names in the Excel file:", sheet_names)
 
 # Define a function to clean each sheet
 def clean_sheet(education_sheet_data):
-    """Clean and preprocess a sheet's DataFrame."""
     # Drop rows or columns with all NaN values
     education_sheet_data = education_sheet_data.dropna(how='all').dropna(axis=1, how='all')
 
@@ -260,12 +258,6 @@ cleaned_data = {}
 
 # Iterate over each sheet and clean the data
 for sheet in sheet_names:
-    print(f"Cleaning sheet: {sheet}")
     sheet_data = excel_file.parse(sheet)
     cleaned_data[sheet] = clean_sheet(sheet_data)
-
-# Example: Display the first few rows of each cleaned sheet
-for sheet, data in cleaned_data.items():
-    print(f"\nFirst rows of cleaned sheet '{sheet}':")
-    print(data.head())
 
