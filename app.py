@@ -4,7 +4,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-rf_model = joblib.load('random_forest_model.pkl')
+#rf_model = joblib.load('random_forest_model.pkl')
 
 
 @app.route('/', methods=['GET', 'POST'])
