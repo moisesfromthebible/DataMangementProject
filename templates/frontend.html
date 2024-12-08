@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>County Election Prediction</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+    
+<body>
+    <h1>Predict Election Outcome for a County</h1>
+
+    <form method="POST">
+        <label for="median_income">Median Income:</label><br>
+        <input type="range" id="median_income" name="median_income" min="0" max="100000" step="1000" value="50000" oninput="this.nextElementSibling.value = this.value">
+        
+
+        <label for="population_density">Population Density:</label><br>
+        <input type="range" id="population_density" name="population_density" min="0" max="5000" step="10" value="1000" oninput="this.nextElementSibling.value = this.value">
+        <output>1000</output><br><br>
+
+        <label for="percent_white">Percentage of White Population:</label><br>
+        <input type="range" id="percent_white" name="percent_white" min="0" max="100" step="1" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output>50</output><br><br>
+
+        <label for="percent_below_poverty">Percentage Below Poverty Line:</label><br>
+        <input type="range" id="percent_below_poverty" name="percent_below_poverty" min="0" max="100" step="1" value="15" oninput="this.nextElementSibling.value = this.value">
+        <output>15</output><br><br>
+
+        <label for="age_0_18_percent">Percentage of Population Aged 0-18:</label><br>
+        <input type="range" id="age_0_18_percent" name="age_0_18_percent" min="0" max="100" step="1" value="20" oninput="this.nextElementSibling.value = this.value">
+        <output>20</output><br><br>
+
+        <label for="age_19_35_percent">Percentage of Population Aged 19-35:</label><br>
+        <input type="range" id="age_19_35_percent" name="age_19_35_percent" min="0" max="100" step="1" value="30" oninput="this.nextElementSibling.value = this.value">
+        <output>30</output><br><br>
+
+        <label for="age_65_plus_percent">Percentage of Population Aged 65+:</label><br>
+        <input type="range" id="age_65_plus_percent" name="age_65_plus_percent" min="0" max="100" step="1" value="15" oninput="this.nextElementSibling.value = this.value">
+        <output>15</output><br><br>
+
+        <label for="unemployment_rate">Unemployment Rate:</label><br>
+        <input type="range" id="unemployment_rate" name="unemployment_rate" min="0" max="50" step="0.1" value="5" oninput="this.nextElementSibling.value = this.value">
+        <output>5</output><br><br>
+
+        <label for="labor_force_participation_rate">Labor Force Participation Rate:</label><br>
+        <input type="range" id="labor_force_participation_rate" name="labor_force_participation_rate" min="0" max="100" step="1" value="65" oninput="this.nextElementSibling.value = this.value">
+        <output>65</output><br><br>
+
+        <label for="voter_turnout_rate">Voter Turnout Rate:</label><br>
+        <input type="range" id="voter_turnout_rate" name="voter_turnout_rate" min="0" max="100" step="1" value="60" oninput="this.nextElementSibling.value = this.value">
+        <output>60</output><br><br>
+
+        <label for="party_A_percentage_2020">Party A Percentage in 2020 Election:</label><br>
+        <input type="range" id="party_A_percentage_2020" name="party_A_percentage_2020" min="0" max="100" step="1" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output>50</output><br><br>
+
+        <label for="party_B_percentage_2020">Party B Percentage in 2020 Election:</label><br>
+        <input type="range" id="party_B_percentage_2020" name="party_B_percentage_2020" min="0" max="100" step="1" value="50" oninput="this.nextElementSibling.value = this.value">
+        <output>50</output><br><br>
+
+        <label for="election_year">Election Year:</label><br>
+        <input type="range" id="election_year" name="election_year" min="2000" max="2024" step="1" value="2020" oninput="this.nextElementSibling.value = this.value">
+        <output>2020</output><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    
+</body>
+</html>
