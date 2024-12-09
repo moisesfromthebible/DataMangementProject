@@ -7,22 +7,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>County Election Outcome Prediction</h1>
-    <form method="POST">
-        <label for="population">Population Estimate:</label><br>
-        <input type="number" id="population" name="population" required><br><br>
+    <div class="container">
+        <h1>County Election Outcome Prediction</h1>
+        <form method="POST">
+            <label for="population">Population Estimate:</label><br>
+            <input type="number" id="population" name="population" required><br><br>
 
-        <label for="education">Education Level (%):</label><br>
-        <input type="number" id="education" name="education" required><br><br>
+            <label for="education">Education Level (% with bachelor's degree or higher):</label><br>
+            <input type="number" id="education" name="education" required><br><br>
 
-        <label for="unemployment">Unemployment Rate (%):</label><br>
-        <input type="number" id="unemployment" name="unemployment" step="0.01" required><br><br>
+            <label for="unemployment">Unemployment Rate (%):</label><br>
+            <input type="number" id="unemployment" name="unemployment" step="0.01" required><br><br>
 
-        <button type="submit">Predict</button>
-    </form>
+            <button type="submit">Predict</button>
+        </form>
 
-    {% if prediction %}
-        <h2>{{ prediction }}</h2>
-    {% endif %}
+        {% if new_data %}
+            <h2>New Data Point:</h2>
+            {{ new_data | safe }}
+        {% endif %}
+
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+
+        {% if probabilities %}
+            <h2>Prediction Probabilities:</h2>
+            {{ probabilities | safe }}
+        {% endif %}
+
+        {% if error %}
+            <h2 style="color: red;">{{ error }}</h2>
+        {% endif %}
+
+        <a href="/about-model">
+            <button style="margin-top: 20px;">Learn About Our Model</button>
+        </a>       
+    </div>
 </body>
 </html>

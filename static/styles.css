@@ -1,66 +1,48 @@
-/* General styles */
-body {
+        /* Add basic styling directly here if styles.css is not modified */
+ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+.container {
+    text-align: center;
+    width: 60%;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: auto;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+h1, h2 {
     color: #333;
 }
-
-/* Center content */
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #444;
-}
-
-/* Form container */
 form {
-    background: #fff;
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-}
-
-/* Form labels and inputs */
-form label {
-    font-size: 14px;
-    color: #555;
-}
-
-form input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-top: 8px;
     margin-bottom: 20px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
-
-form button {
-    display: block;
-    width: 100%;
+button {
+    padding: 10px 15px;
     background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    padding: 10px;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
-
-form button:hover {
+button:hover {
     background-color: #0056b3;
-}
-
-/* Result message */
-h2 {
-    text-align: center;
-    color: #444;
-    margin-top: 20px;
 }
