@@ -3,7 +3,7 @@
 This project focuses on analyzing county-level demographic, socioeconomic, and electoral data to develop a predictive model for U.S. presidential election outcomes
 
 
-## Dataset Sources
+## Dataset Sources (already inside the model section)
 The project utilizes multiple publicly available datasets:
 1. **Unemployment and Median Household Income**
    - [USDA County-Level Data Sets](https://www.ers.usda.gov/data-products/county-level-data-sets/)
