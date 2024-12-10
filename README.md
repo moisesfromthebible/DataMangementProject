@@ -5,13 +5,15 @@ This project focuses on analyzing county-level demographic, socioeconomic, and e
 
 ## Dataset Sources (already inside the model section)
 The project utilizes multiple publicly available datasets:
-1. **Unemployment and Median Household Income**
+1.  **County Presidential Election Returns 2000-2020**
+   - [Election Results 2000-2020](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ)
+2.  **Unemployment and Median Household Income**
    - [USDA County-Level Data Sets](https://www.ers.usda.gov/data-products/county-level-data-sets/)
-   - Latest data: Annual average 2022 unemployment and 2021 median household income.
-2. **Education Data**
+   - Latest data: Unemployment data until 2022.
+3. **Education Data**
    - Source: [USDA County-Level Data Sets](https://www.ers.usda.gov/data-products/county-level-data-sets/)
    - Education data from 2000 to 2022
-3. **Population Estimates**
+4. **Population Estimates**
    - [Intercensal Estimates (2000–2010)](https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-counties.html)
    - [Annual Population Estimates (2010s)](https://www.census.gov/programs-surveys/popest/technical-documentation/research/evaluation-estimates/2020-evaluation-estimates/2010s-counties-total.html)
    - [Annual Estimates (2020s)](https://www.census.gov/data/tables/time-series/demo/popest/2020s-counties-total.html)
