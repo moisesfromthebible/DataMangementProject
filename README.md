@@ -47,6 +47,7 @@ The project uses the following Python libraries:
 - **Visualization:** `matplotlib`, `seaborn`
 - **Machine Learning:** `scikit-learn` (RandomForestClassifier, GridSearchCV)
 - **Evaluation Metrics:** `accuracy_score`, `precision_score`, `recall_score`, `f1_score`, `classification_report`
+- **Web Framework:** `Flask`
 - **Utilities:** `joblib`, `requests`
 
 ---
