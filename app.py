@@ -61,50 +61,6 @@ def home():
     # On GET, just show the form
     return render_template('frontend.html')
 
-@app.route('/about-model', methods=['GET'])
-def about_model():
-    # Information about the model
-    model_info = {
-        "Algorithm": "Random Forest Classifier",
-        "Features": feature_order,
-        "Hyperparameters": {
-            "n_estimators": rf_model.get_params()['n_estimators'],
-            "max_depth": rf_model.get_params()['max_depth'],
-            "min_samples_split": rf_model.get_params()['min_samples_split'],
-            "min_samples_leaf": rf_model.get_params()['min_samples_leaf']
-        }
-    }
-    return render_template('about_model.html', model_info=model_info)
-
-@app.route('/query-database', methods=['GET', 'POST'])
-def query_database():
-    if request.method == 'POST':
-        # Get user input from the form
-        table_name = request.form.get('table_name')
-        limit = int(request.form.get('limit', 10))
-
-        # Query the database
-        conn = sqlite3.connect('election_results.db')
-        try:
-            query = f"SELECT * FROM {table_name} LIMIT {limit};"
-            df = pd.read_sql_query(query, conn)
-            conn.close()
-
-            # Convert the query result to an HTML table
-            table_html = df.to_html(classes='dataframe', index=False)
-        except Exception as e:
-            conn.close()
-            return render_template(
-                'query_database.html',
-                error=f"Error querying the database: {str(e)}",
-                result=None
-            )
-
-        return render_template('query_database.html', error=None, result=table_html)
-
-    # Render the query form
-    return render_template('query_database.html', error=None, result=None)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
